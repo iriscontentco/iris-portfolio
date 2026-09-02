@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iris Jean Oray — Client Coordinator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1C2430;
+    --ink-soft: #4A5361;
+    --paper: #F1EFEA;
+    --paper-raised: #FFFFFF;
+    --accent: #3F6259;
+    --accent-warm: #B4682E;
+    --line: #D9D5CB;
+    --max-w: 920px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Archivo', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  a { color: inherit; }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent-warm);
+    outline-offset: 3px;
+  }
+
+  .wrap {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    line-height: 1.15;
+    margin: 0;
+  }
+
+  /* ---------- Nav ---------- */
+  header.site-nav {
+    padding: 28px 0 0;
+  }
+  .site-nav .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 18px;
+  }
+  .mark {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--accent);
+  }
+  .site-nav nav a {
+    text-decoration: none;
+    color: var(--ink-soft);
+    font-size: 14px;
+    margin-left: 22px;
+  }
+  .site-nav nav a:hover { color: var(--accent-warm); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 72px 0 64px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
+    align-items: end;
+  }
+  .hero h1 {
+    font-size: clamp(38px, 5.5vw, 60px);
+    letter-spacing: -0.01em;
+  }
+  .hero .role {
+    font-size: 15px;
+    color: var(--accent);
+    margin: 0 0 14px;
+  }
+  .hero p.lede {
+    max-width: 46ch;
+    color: var(--ink-soft);
+    margin-top: 18px;
+    font-size: 18px;
+  }
+  .hero-status {
+    border-left: 2px solid var(--accent);
+    padding-left: 18px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .hero-status .num {
+    font-family: 'Fraunces', serif;
+    font-size: 30px;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  section { padding: 56px 0; border-top: 1px solid var(--line); }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .section-head h2 { font-size: 26px; }
+  .section-head .desc { color: var(--ink-soft); max-width: 52ch; }
+
+  /* ---------- Services ---------- */
+  .services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .service {
+    background: var(--paper-raised);
+    padding: 26px 22px;
+  }
+  .service h3 { font-size: 18px; margin-bottom: 8px; }
+  .service p { font-size: 14.5px; color: var(--ink-soft); margin: 0; }
+
+  /* ---------- Process (legitimate sequence) ---------- */
+  .process { display: flex; flex-direction: column; }
+  .step {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 18px;
+    padding: 20px 0;
+    border-top: 1px solid var(--line);
+  }
+  .step:first-child { border-top: none; }
+  .step .step-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--accent);
+    font-size: 20px;
+  }
+  .step h3 { font-size: 17px; margin-bottom: 4px; }
+  .step p { margin: 0; color: var(--ink-soft); font-size: 15px; max-width: 56ch; }
+
+  /* ---------- Roster / experience ---------- */
+  .roster-item {
+    display: grid;
+    grid-template-columns: 150px 1fr auto;
+    gap: 20px;
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .roster-item:first-child { border-top: none; }
+  .roster-item .dates { font-size: 13.5px; color: var(--ink-soft); }
+  .roster-item h3 { font-size: 17px; margin-bottom: 3px; }
+  .roster-item .org { font-size: 14px; color: var(--accent); }
+  .roster-item p.note { margin: 4px 0 0; font-size: 14.5px; color: var(--ink-soft); }
+
+  /* ---------- Contact ---------- */
+  .contact-block {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 2px;
+    padding: 48px 40px;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 30px;
+    align-items: center;
+  }
+  .contact-block h2 { color: var(--paper); font-size: 28px; }
+  .contact-block p { color: #C7CCD1; margin-top: 10px; max-width: 42ch; }
+  .contact-links { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+  .contact-links a {
+    text-decoration: none;
+    border-bottom: 1px solid #465063;
+    padding-bottom: 2px;
+    font-size: 15px;
+  }
+  .contact-links a:hover { border-color: var(--accent-warm); color: #fff; }
+  .btn-primary {
+    display: inline-block;
+    background: var(--accent-warm);
+    color: #fff;
+    padding: 11px 20px;
+    border-radius: 2px;
+    text-decoration: none;
+    font-size: 14.5px;
+    font-weight: 500;
+  }
+  .btn-primary:hover { background: #9c5522; }
+
+  footer {
+    padding: 30px 0 50px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 720px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-status { border-left: none; border-top: 2px solid var(--accent); padding-left: 0; padding-top: 14px; }
+    .section-head { grid-template-columns: 1fr; }
+    .services { grid-template-columns: 1fr; }
+    .roster-item { grid-template-columns: 1fr; }
+    .roster-item .dates { order: -1; }
+    .contact-block { grid-template-columns: 1fr; padding: 32px 24px; }
+    .site-nav nav a { margin-left: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap">
+    <span class="mark">iriscontenco</span>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="hero" style="border-top: none;">
+    <div>
+      <p class="role">Client Coordinator</p>
+      <h1>Iris Jean Oray</h1>
+      <p class="lede">I sit between the client and the team, making sure nothing gets lost in the handoff — schedules held, questions answered same-day, and every project moving without anyone having to chase it.</p>
+    </div>
+    <div class="hero-status">
+      <span class="num">6</span>
+      accounts coordinated at any given time, without a dropped thread
+    </div>
+  </section>
+</div>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Where I add value</h2>
+      <p class="desc">The parts of a project that don't show up on the invoice, but decide whether the client stays.</p>
+    </div>
+    <div class="services">
+      <div class="service">
+        <h3>Onboarding</h3>
+        <p>Get a new client from signed contract to first milestone without confusion about who owns what.</p>
+      </div>
+      <div class="service">
+        <h3>Communication</h3>
+        <p>One point of contact for status, timelines, and changes — so the client never has to ask twice.</p>
+      </div>
+      <div class="service">
+        <h3>Scheduling</h3>
+        <p>Keep deliverables, reviews, and approvals on a calendar everyone actually trusts.</p>
+      </div>
+      <div class="service">
+        <h3>Escalation</h3>
+        <p>Catch a problem early, route it to the right person, and close the loop with the client myself.</p>
+      </div>
+      <div class="service">
+        <h3>Reporting</h3>
+        <p>Turn project status into a two-minute update a client can read between meetings.</p>
+      </div>
+      <div class="service">
+        <h3>Renewal</h3>
+        <p>Track satisfaction and scope drift early enough to make renewal a formality, not a negotiation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>How a project runs with me on it</h2>
+      <p class="desc">The same four stages, every time, so a client always knows what's next.</p>
+    </div>
+    <div class="process">
+      <div class="step">
+        <span class="step-num">01</span>
+        <div><h3>Kickoff</h3><p>Confirm scope, timeline, and who's responsible for what — in writing, before work starts.</p></div>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <div><h3>Check-ins</h3><p>A standing cadence, not ad hoc pings — the client knows exactly when they'll hear from me.</p></div>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <div><h3>Course correction</h3><p>When something slips, I say so immediately and bring a revised plan, not just the bad news.</p></div>
+      </div>
+      <div class="step">
+        <span class="step-num">04</span>
+        <div><h3>Close-out</h3><p>A wrap-up that documents what shipped, what changed, and what to plan for next time.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Experience</h2>
+      <p class="desc">Swap in your real roles and dates here.</p>
+    </div>
+    <div class="roster">
+      <div class="roster-item">
+        <span class="dates">2023 — Present</span>
+        <div>
+          <h3>Client Coordinator</h3>
+          <span class="org">Studio Name</span>
+          <p class="note">Managing onboarding and communications for a portfolio of ongoing client accounts.</p>
+        </div>
+      </div>
+      <div class="roster-item">
+        <span class="dates">2021 — 2023</span>
+        <div>
+          <h3>Account Support Associate</h3>
+          <span class="org">Company Name</span>
+          <p class="note">Coordinated scheduling and reporting across a growing client base during a period of rapid team growth.</p>
+        </div>
+      </div>
+      <div class="roster-item">
+        <span class="dates">2019 — 2021</span>
+        <div>
+          <h3>Operations Assistant</h3>
+          <span class="org">Company Name</span>
+          <p class="note">Supported project leads with logistics, documentation, and client-facing scheduling.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-block">
+      <div>
+        <h2>Let's talk about your accounts</h2>
+        <p>If your team is growing faster than your client communication can keep up, that's the gap I fill.</p>
+        <p style="margin-top:20px;"><a class="btn-primary" href="mailto:hello@iriscontenco.com">Email me</a></p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:hello@iriscontenco.com">hello@iriscontenco.com</a>
+        <a href="#">linkedin.com/in/irisjeanoray</a>
+        <a href="#">iriscontenco.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%;">
+    <span>Iris Jean Oray</span>
+    <span>iriscontenco</span>
+  </div>
+</footer>
+
+</body>
+</html>
